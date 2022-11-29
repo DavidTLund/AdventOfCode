@@ -27,6 +27,8 @@ secret_key = 'pqrstuv'
 
 # David Lund Knowit key. Funny thing the answer was the same for both
 secret_key = 'bgvyzdsv'
+# David hotmail key
+secret_key = 'ckczppom'
 
 index = find_first_MD5(secret_key)
 
