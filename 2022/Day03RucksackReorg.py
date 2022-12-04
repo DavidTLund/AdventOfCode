@@ -34,6 +34,7 @@ def main_part1():
     score = 0
     rucksacks = getData()
     for rucksack in rucksacks:
+        #print(rucksack)
         rucksack = rucksack.rstrip()
         sides = splitRuckSack(rucksack)
         #print('Rucksack:', rucksack, sides)
@@ -43,20 +44,30 @@ def main_part1():
         score += tscore
     print('Score:', score)
 
+def findCommonChIn3rows(rucksack0, rucksack1, rucksack2):
+        r0 = rucksack0.rstrip()
+        r1 = rucksack1.rstrip()
+        r2 = rucksack2.rstrip()
+        for ch in r0:
+            if ch in r1:
+                if ch in r2:
+                    return ch
+        return None
+
+
 def main_part2():
     score = 0
-    with open(data_file) as f:
-        alltext =f.read()
-        rucksacks = alltext.split('\r\n')
+    rucksacks = getData()
 
-        for rucksack in rucksacks:
-            rucksack = rucksack.rstrip()
-            sides = splitRuckSack(rucksack)
-            print('Rucksack:', rucksack, sides)
-            ch = findCommonChInRow(sides[0], sides[1])
-            tscore = scoreLetter(ch)
-            print('Letter', ch, tscore)
-            score += tscore
+    for idx in range(0, len(rucksacks)-1, 3):
+        if rucksacks[idx] == None:
+            break
+        ch = findCommonChIn3rows(rucksacks[idx], rucksacks[idx+1], rucksacks[idx+2])
+        tscore = scoreLetter(ch)
+        print('Letter', ch, tscore)
+        score += tscore
     print('Score:', score)
 
 main_part1()
+
+main_part2()
