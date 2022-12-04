@@ -1,4 +1,6 @@
-data_file= "C:\\work\\AdventOfCode\\2022\\Data\\Day01.txt"
+import os
+script_dir = os.path.dirname(__file__)
+data_file = os.path.join(script_dir, "Data/Day01.txt")
 
 elves = {}
 elf = 1
